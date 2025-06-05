@@ -1,0 +1,30 @@
+{
+  "name": "STREAM",
+
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "stream",
+  "workspaceFolder": "/home/ubuntu/stream",
+  "shutdownAction": "stopCompose",
+
+  "initializeCommand": "ssh-add -L || ssh -T git@github.com; true",
+	"updateRemoteUserUID": false,
+	"forwardPorts": [7474, 8086],
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"bierner.markdown-checkbox",
+				"bierner.markdown-footnotes",
+				"shd101wyy.markdown-preview-enhanced",
+				"bierner.markdown-preview-github-styles",
+				"darkriszty.markdown-table-prettify",
+				"flyfly6.terminal-in-status-bar",
+				"discretegames.f5anything",
+				"GrapeCity.gc-excelviewer",
+				"albymor.increment-selection",
+				"bmalehorn.shell-syntax",
+				"redhat.vscode-xml"
+			]
+		}
+	}
+}
