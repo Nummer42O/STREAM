@@ -1,0 +1,6 @@
+[submodule "STREAM-FDL"]
+	path = STREAM-FDL
+	url = git@github.com:Nummer42O/STREAM-FDL.git
+[submodule "STREAM-DSM"]
+	path = STREAM-DSM
+	url = git@github.com:KARTOFF8xE/DiplArbeit_Container.git
