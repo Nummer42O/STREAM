@@ -73,7 +73,6 @@
         "close": true
       },
       "problemMatcher": []
-    },
-    //! TODO: start pubsub
+    }
   ]
 }
