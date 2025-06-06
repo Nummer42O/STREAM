@@ -9,7 +9,6 @@ services:
       - "9256:9256"
     tty: true
     working_dir: /home/ubuntu/stream
-    # command: sleep infinity
     depends_on:
       - neo4j
       - influxdb
