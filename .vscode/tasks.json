@@ -1,0 +1,79 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "Terminator",
+      "detail": "Open Terminator window from within running docker container.",
+
+      "command": "terminator",
+
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "showReuseMessage": false,
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "Build DSM",
+      "detail": "Build STREAM-DSM ROS2 packages.",
+
+      "command": "bash",
+      "args": ["--", "${workspaceFolder}/.vscode/scripts/build-dsm.bash", "${workspaceFolder}"],
+
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "showReuseMessage": false,
+        // "clear": true
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "Build FDL",
+      "detail": "Build STREAM-FDL program.",
+
+      "command": "bash",
+      "args": ["--", "${workspaceFolder}/.vscode/scripts/build-fdl.bash", "${workspaceFolder}"],
+
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "showReuseMessage": false,
+        // "clear": true
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "Build",
+      "detail": "Build STREAM-DSM and STREAM-FDL.",
+
+      "command": ":",
+      "dependsOn": [
+        "Build FDL",
+        "Build DSM"
+      ],
+      "dependsOrder": "parallel",
+
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": false,
+        "reveal": "never",
+        "showReuseMessage": false,
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    //! TODO: start pubsub
+  ]
+}

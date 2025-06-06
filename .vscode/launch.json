@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "f5anything",
+      "name": "Run STREAM",
+      "request": "launch",
+
+      "preLaunchTask": "Build",
+      "command": "bash -- ${workspaceFolder}/.vscode/scripts/start-stream.bash ${workspaceFolder}",
+
+      "showTerminal": true,
+      "terminalName": "STREAM Terminator"
+    }
+  ]
+}
