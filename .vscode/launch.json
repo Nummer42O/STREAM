@@ -11,6 +11,21 @@
 
       "showTerminal": true,
       "terminalName": "STREAM Terminator"
-    }
+    },
+    {
+      "name": "Launch STREAM-FDL",
+      "type": "cppdbg",
+      "request": "launch",
+
+      "preLaunchTask": "Build FDL",
+      "program": "${workspaceFolder}/STREAM-FDL/build/main",
+      "args": ["${workspaceFolder}/STREAM-FDL/example-config.json"],
+      "cwd": "${workspaceFolder}/STREAM-FDL",
+      "environment": [],
+
+      // "stopAtEntry": false,
+      // "externalConsole": false,
+      "MIMode": "gdb",
+    },
   ]
 }

@@ -24,11 +24,15 @@
       "command": "bash",
       "args": ["--", "${workspaceFolder}/.vscode/scripts/build-dsm.bash", "${workspaceFolder}"],
 
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
       "presentation": {
         "echo": false,
         "reveal": "silent",
         "showReuseMessage": false,
-        // "clear": true
+        "clear": true,
         "close": true
       },
       "problemMatcher": []
@@ -41,11 +45,15 @@
       "command": "bash",
       "args": ["--", "${workspaceFolder}/.vscode/scripts/build-fdl.bash", "${workspaceFolder}"],
 
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "presentation": {
         "echo": false,
         "reveal": "silent",
         "showReuseMessage": false,
-        // "clear": true
+        "clear": true,
         "close": true
       },
       "problemMatcher": []
@@ -64,12 +72,30 @@
 
       "group": {
         "kind": "build",
-        "isDefault": true
+        "isDefault": false
       },
       "presentation": {
         "echo": false,
         "reveal": "never",
         "showReuseMessage": false,
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "Run STREAM without FDL",
+      "detail": "Start only Payload and DSM for debugging purposes.",
+
+      "command": "bash",
+      "args": ["--", "${workspaceFolder}/.vscode/scripts/start-stream.bash", "${workspaceFolder}", "debug"],
+      "dependsOn": ["Build DSM"],
+      "dependsOrder": "sequence",
+
+      "presentation": {
+        "echo": false,
+        "showReuseMessage": false,
+        "clear": true,
         "close": true
       },
       "problemMatcher": []

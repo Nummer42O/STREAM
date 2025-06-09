@@ -10,6 +10,7 @@ function _waitFor {
 }
 
 wsDir="${1}"
+layout="${2:-default}"
 
 # reset lttng
 # TODO: "|| exit" ?
@@ -20,4 +21,4 @@ rm -rf /tmp/continuous_traces
 rm -rf /tmp/structural_traces
 _waitFor 1
 
-terminator --config "${wsDir}"/.vscode/scripts/terminator-config
+terminator --config "${wsDir}"/.vscode/scripts/terminator-config ${profileArg} --layout "${layout}"
