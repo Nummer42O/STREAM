@@ -5,7 +5,9 @@ wsDir="${1}"
 cd "${wsDir}"/STREAM-DSM || exit
 
 source /opt/ros/rolling/setup.bash || exit
-source install/setup.bash || exit
+if [[ -d install ]]; then
+  source install/setup.bash || exit
+fi
 
 set -x
 colcon build \
