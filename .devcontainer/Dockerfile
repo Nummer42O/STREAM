@@ -23,7 +23,8 @@ RUN set -x && \
     openssh-client \
     terminator tmux \
     htop \
-    python3-requests
+    python3-requests \
+    libgraphviz-dev
 RUN set -x && \
   apt-get autoremove -y -qq
 
