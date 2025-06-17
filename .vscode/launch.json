@@ -2,17 +2,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "f5anything",
-      "name": "Run STREAM",
-      "request": "launch",
-
-      "preLaunchTask": "Build",
-      "command": "bash -- ${workspaceFolder}/.vscode/scripts/start-stream.bash ${workspaceFolder}",
-
-      "showTerminal": true,
-      "terminalName": "STREAM Terminator"
-    },
-    {
       "name": "Launch STREAM-FDL",
       "type": "cppdbg",
       "request": "launch",
@@ -27,5 +16,29 @@
       // "externalConsole": false,
       "MIMode": "gdb",
     },
+    {
+      "name": "Launch STREAM-DSM",
+      "type": "cppdbg",
+      "request": "launch",
+
+      "preLaunchTask": "Build DSM",
+      "program": "${workspaceFolder}/STREAM-DSM/build/datamgmt/datamgmt",
+      "cwd": "${workspaceFolder}/STREAM-DSM",
+      "environment": [],
+
+      // "stopAtEntry": false,
+      // "externalConsole": false,
+      "MIMode": "gdb",
+    },
+  ],
+  "compounds": [
+    {
+      "name": "Launch STREAM",
+      "configurations": [
+        "Launch STREAM-FDL",
+        "Launch STREAM-DSM"
+      ],
+      "stopAll": true,
+    }
   ]
 }

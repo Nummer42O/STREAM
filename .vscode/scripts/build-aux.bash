@@ -15,4 +15,4 @@ colcon build \
   --cmake-args \
     -DCMAKE_BUILD_TYPE=Debug \
     -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-  --packages-select dbs ipc datamgmt
+  --packages-select dbs ipc babeltrace_plugins tracer

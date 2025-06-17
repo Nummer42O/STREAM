@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+
 wsDir="${1}"
 cd "${wsDir}"/STREAM-FDL || exit
 
