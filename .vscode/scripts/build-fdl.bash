@@ -9,7 +9,10 @@ if [[ -n ${ROS_VERSION} ]]; then
   exit 1
 fi
 
-set -x
+set -ex
+set -o pipefail
+date +'[%x %X]' > build/configure.log || exit
+date +'[%x %X]' > build/build.log || exit
 cmake \
   -S . \
   -B build/ \
@@ -17,5 +20,7 @@ cmake \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
   -DFDL_LOG_LEVEL=0 \
   -DFDL_LOG_TIMESTAMP=ON \
-  -DFDL_LOG_MINIMAL=ON
-cmake --build build/
+  -DFDL_LOG_MINIMAL=ON \
+  2>&1 | tee build/configure.log
+cmake --build build/ \
+  2>&1  | tee build/build.log

@@ -9,10 +9,7 @@
       "command": "bash",
       "args": ["--", "${workspaceFolder}/.vscode/scripts/build-dsm.bash", "${workspaceFolder}"],
 
-      "group": {
-        "kind": "build",
-        "isDefault": false
-      },
+      "group": "build",
       "presentation": {
         "echo": false,
         "reveal": "silent",
@@ -30,10 +27,7 @@
       "command": "bash",
       "args": ["--", "${workspaceFolder}/.vscode/scripts/build-aux.bash", "${workspaceFolder}"],
 
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
+      "group": "build",
       "presentation": {
         "echo": false,
         "reveal": "silent",
@@ -51,10 +45,29 @@
       "command": "bash",
       "args": ["--", "${workspaceFolder}/.vscode/scripts/build-fdl.bash", "${workspaceFolder}"],
 
-      "group": {
-        "kind": "build",
-        "isDefault": true
+      "group": "build",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "showReuseMessage": false,
+        "clear": true,
+        "close": true
       },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "Build STREAM",
+      "detail": "Build STREAM-FDL program and STREAM-DSM datamgmt packages.",
+
+      "command": ":",
+      "dependsOn": [
+        "Build FDL",
+        "Build DSM"
+      ],
+      "dependsOrder": "parallel",
+
+      "group": "build",
       "presentation": {
         "echo": false,
         "reveal": "silent",

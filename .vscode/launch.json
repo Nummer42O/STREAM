@@ -8,7 +8,7 @@
 
       "preLaunchTask": "Build FDL",
       "program": "${workspaceFolder}/STREAM-FDL/build/main",
-      "args": ["${workspaceFolder}/STREAM-FDL/example-config.json"],
+      "args": ["${workspaceFolder}/STREAM-FDL/example-config.json", "&>", "${workspaceFolder}/STREAM-FDL/logs/$(date +'%F-%H-%M').log"],
       "cwd": "${workspaceFolder}/STREAM-FDL",
       "environment": [],
 
@@ -34,6 +34,7 @@
   "compounds": [
     {
       "name": "Launch STREAM",
+      "preLaunchTask": "Build STREAM",
       "configurations": [
         "Launch STREAM-FDL",
         "Launch STREAM-DSM"
