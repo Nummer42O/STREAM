@@ -13,7 +13,7 @@ set -ex
 set -o pipefail
 date +'[%x %X]' > build/configure.log || exit
 date +'[%x %X]' > build/build.log || exit
-cmake \
+unbuffer cmake \
   -S . \
   -B build/ \
   -DCMAKE_BUILD_TYPE=Debug \
@@ -22,5 +22,5 @@ cmake \
   -DFDL_LOG_TIMESTAMP=ON \
   -DFDL_LOG_MINIMAL=ON \
   2>&1 | tee build/configure.log
-cmake --build build/ \
+unbuffer cmake --build build/ \
   2>&1  | tee build/build.log

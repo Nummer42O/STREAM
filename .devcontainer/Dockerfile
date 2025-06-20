@@ -24,7 +24,8 @@ RUN set -x && \
     terminator tmux \
     htop \
     python3-requests \
-    libgraphviz-dev
+    libgraphviz-dev \
+    expect-dev
 RUN set -x && \
   apt-get autoremove -y -qq
 

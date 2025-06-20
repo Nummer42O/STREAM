@@ -15,6 +15,13 @@
       // "stopAtEntry": false,
       // "externalConsole": false,
       "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Allow SIGHUP",
+          "text": "handle SIGHUP nostop pass print",
+          "ignoreFailures": false
+        }
+      ]
     },
     {
       "name": "Launch STREAM-DSM",
