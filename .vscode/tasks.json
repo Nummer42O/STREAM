@@ -4,7 +4,7 @@
     {
       "type": "shell",
       "label": "Build DSM",
-      "detail": "Build STREAM-DSM ROS2 datamgmt package.",
+      "hide": true,
 
       "command": "bash",
       "args": ["--", "${workspaceFolder}/.vscode/scripts/build-dsm.bash", "${workspaceFolder}"],
@@ -21,26 +21,8 @@
     },
     {
       "type": "shell",
-      "label": "Build auxillary",
-      "detail": "Build auxiallary STREAM-DSM ROS2 packages.",
-
-      "command": "bash",
-      "args": ["--", "${workspaceFolder}/.vscode/scripts/build-aux.bash", "${workspaceFolder}"],
-
-      "group": "build",
-      "presentation": {
-        "echo": false,
-        "reveal": "silent",
-        "showReuseMessage": false,
-        "clear": true,
-        "close": true
-      },
-      "problemMatcher": []
-    },
-    {
-      "type": "shell",
       "label": "Build FDL",
-      "detail": "Build STREAM-FDL program.",
+      "hide": true,
 
       "command": "bash",
       "args": ["--", "${workspaceFolder}/.vscode/scripts/build-fdl.bash", "${workspaceFolder}"],
@@ -57,8 +39,26 @@
     },
     {
       "type": "shell",
+      "label": "Build evaluation",
+      "hide": true,
+
+      "command": "bash",
+      "args": ["--", "${workspaceFolder}/.vscode/scripts/build-evaluation.bash", "${workspaceFolder}"],
+
+      "group": "build",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "showReuseMessage": false,
+        "clear": true,
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
       "label": "Build STREAM",
-      "detail": "Build STREAM-FDL program and STREAM-DSM datamgmt packages.",
+      "hide": true,
 
       "command": ":",
       "dependsOn": [
@@ -67,7 +67,29 @@
       ],
       "dependsOrder": "parallel",
 
-      "group": "build",
+      // "group": "build",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "showReuseMessage": false,
+        "clear": true,
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "Build STREAM full",
+      "hide": true,
+
+      "command": ":",
+      "dependsOn": [
+        "Build STREAM",
+        "Build evaluation"
+      ],
+      "dependsOrder": "parallel",
+
+      // "group": "build",
       "presentation": {
         "echo": false,
         "reveal": "silent",
@@ -99,8 +121,24 @@
 
       "command": "bash",
       "args": ["--", "${workspaceFolder}/.vscode/scripts/start-stream.bash", "${workspaceFolder}", "debug"],
-      "dependsOn": ["Build DSM"],
-      "dependsOrder": "sequence",
+      "dependsOn": "Build DSM",
+
+      "presentation": {
+        "echo": false,
+        "showReuseMessage": false,
+        "clear": true,
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "Launch Monitors",
+      "detail": "Start payload and auxillary monitors for debugging purposes.",
+
+      "command": "bash",
+      "args": ["--", "${workspaceFolder}/.vscode/scripts/start-stream.bash", "${workspaceFolder}", "evaluation"],
+      "dependsOn": "Build DSM",
 
       "presentation": {
         "echo": false,

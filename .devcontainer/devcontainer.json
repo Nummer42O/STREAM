@@ -13,18 +13,20 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"bierner.markdown-checkbox",
-				"bierner.markdown-footnotes",
-				"shd101wyy.markdown-preview-enhanced",
-				"bierner.markdown-preview-github-styles",
-				"darkriszty.markdown-table-prettify",
-				"flyfly6.terminal-in-status-bar",
-				"discretegames.f5anything",
-				"GrapeCity.gc-excelviewer",
-				"albymor.increment-selection",
-				"bmalehorn.shell-syntax",
-				"redhat.vscode-xml"
-			]
+        "bierner.markdown-checkbox",
+        "bierner.markdown-footnotes",
+        "shd101wyy.markdown-preview-enhanced",
+        "bierner.markdown-preview-github-styles",
+        "darkriszty.markdown-table-prettify",
+        "flyfly6.terminal-in-status-bar",
+        "discretegames.f5anything",
+        "GrapeCity.gc-excelviewer",
+        "albymor.increment-selection",
+        "bmalehorn.shell-syntax",
+        "redhat.vscode-xml",
+        "tamasfe.even-better-toml",
+        "rogalmic.bash-debug"
+      ]
 		}
 	}
 }

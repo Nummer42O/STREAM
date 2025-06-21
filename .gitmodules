@@ -4,3 +4,6 @@
 [submodule "STREAM-DSM"]
 	path = STREAM-DSM
 	url = git@github.com:KARTOFF8xE/DiplArbeit_Container.git
+[submodule "evaluation/src/ros2-performance"]
+	path = evaluation/src/ros2-performance
+	url = git@github.com:irobot-ros/ros2-performance.git

@@ -37,6 +37,17 @@
       // "externalConsole": false,
       "MIMode": "gdb",
     },
+    {
+      "name": "Launch STREAM evaluation",
+      "terminalName": "Evaluation",
+      "type": "f5anything",
+      "request": "launch",
+
+      "preLaunchTask": "Build evaluation",
+      "command": "bash ${workspaceFolder}/.vscode/scripts/launch-irobot-benchmark.bash ${workspaceFolder}",
+
+      "terminalIndex": -1
+    }
   ],
   "compounds": [
     {
@@ -47,6 +58,16 @@
         "Launch STREAM-DSM"
       ],
       "stopAll": true,
+    },
+    {
+      "name": "Launch evaluation",
+      "preLaunchTask": "Build STREAM full",
+      "configurations": [
+        "Launch STREAM-FDL",
+        "Launch STREAM-DSM",
+        "Launch STREAM evaluation"
+      ],
+      "stopAll": false,
     }
   ]
 }
