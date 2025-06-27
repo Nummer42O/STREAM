@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+
 function _waitFor {
   local waitS="${1}"
   for x in $(seq ${waitS} 1); do
@@ -15,8 +16,8 @@ layout="${2:-default}"
 # reset lttng
 # TODO: "|| exit" ?
 lttng destroy -a
-lttng-sessiond --daemonize
-lttng-relayd -d
+lttng-sessiond --background
+# lttng-relayd -d
 rm -rf /tmp/continuous_traces
 rm -rf /tmp/structural_traces
 _waitFor 1

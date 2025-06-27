@@ -113,22 +113,6 @@
     },
     {
       "type": "shell",
-      "label": "Launch evaluation network",
-      "detail": "Start payload for debugging purposes.",
-
-      "command": "bash",
-      "args": ["--", "${workspaceFolder}/.vscode/scripts/launch-irobot-benchmark.bash", "${workspaceFolder}"],
-      "dependsOn": "Build evaluation",
-
-      "presentation": {
-        "echo": false,
-        "showReuseMessage": false,
-        "clear": true
-      },
-      "problemMatcher": []
-    },
-    {
-      "type": "shell",
       "label": "Wait 3s",
       "hide": true,
 
