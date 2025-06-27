@@ -16,4 +16,4 @@ process_names:
       - "/lib/tracer/structural"
   - name: "FDL"
     cmdline:
-      - "./build/main example-config.json"
+      - "STREAM-FDL/build/main"

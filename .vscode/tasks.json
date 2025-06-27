@@ -57,17 +57,34 @@
     },
     {
       "type": "shell",
-      "label": "Build STREAM",
+      "label": "Reset neo4j",
+      "detail": "Run 'MATCH (n) DETACH DELETE n'.",
+
+      "command": "bash",
+      "args": ["--", "${workspaceFolder}/.vscode/scripts/prelaunch-reset.bash"],
+
+      "presentation": {
+        "echo": false,
+        "showReuseMessage": false,
+        "clear": true,
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "STREAM-prelaunnch-task",
       "hide": true,
 
       "command": ":",
       "dependsOn": [
         "Build FDL",
-        "Build DSM"
+        "Build DSM",
+        "Build evaluation",
+        "Reset neo4j"
       ],
       "dependsOrder": "parallel",
 
-      // "group": "build",
       "presentation": {
         "echo": false,
         "reveal": "silent",
@@ -79,45 +96,8 @@
     },
     {
       "type": "shell",
-      "label": "Build STREAM full",
-      "hide": true,
-
-      "command": ":",
-      "dependsOn": [
-        "Build STREAM",
-        "Build evaluation"
-      ],
-      "dependsOrder": "parallel",
-
-      // "group": "build",
-      "presentation": {
-        "echo": false,
-        "reveal": "silent",
-        "showReuseMessage": false,
-        "clear": true,
-        "close": true
-      },
-      "problemMatcher": []
-    },
-    {
-      "type": "shell",
-      "label": "Terminator",
-      "detail": "Open Terminator window from within running docker container.",
-
-      "command": "terminator",
-
-      "presentation": {
-        "echo": false,
-        "reveal": "silent",
-        "showReuseMessage": false,
-        "close": true
-      },
-      "problemMatcher": []
-    },
-    {
-      "type": "shell",
-      "label": "Launch STREAM monitors and payload",
-      "detail": "Start payload and auxillary monitors for debugging purposes.",
+      "label": "Launch Monitors",
+      "detail": "Start auxillary monitors for debugging purposes.",
 
       "command": "bash",
       "args": ["--", "${workspaceFolder}/.vscode/scripts/start-stream.bash", "${workspaceFolder}", "debug"],
@@ -133,12 +113,26 @@
     },
     {
       "type": "shell",
-      "label": "Launch Monitors",
-      "detail": "Start payload and auxillary monitors for debugging purposes.",
+      "label": "Launch evaluation network",
+      "detail": "Start payload for debugging purposes.",
 
       "command": "bash",
-      "args": ["--", "${workspaceFolder}/.vscode/scripts/start-stream.bash", "${workspaceFolder}", "evaluation"],
-      "dependsOn": "Build DSM",
+      "args": ["--", "${workspaceFolder}/.vscode/scripts/launch-irobot-benchmark.bash", "${workspaceFolder}"],
+      "dependsOn": "Build evaluation",
+
+      "presentation": {
+        "echo": false,
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "Wait 3s",
+      "hide": true,
+
+      "command": "sleep 3s",
 
       "presentation": {
         "echo": false,

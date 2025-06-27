@@ -5,10 +5,13 @@
       "name": "Launch STREAM-FDL",
       "type": "cppdbg",
       "request": "launch",
+      "presentation": {
+        "hidden": true,
+      },
 
-      "preLaunchTask": "Build FDL",
+      "preLaunchTask": "Wait 3s",
       "program": "${workspaceFolder}/STREAM-FDL/build/main",
-      "args": ["${workspaceFolder}/STREAM-FDL/example-config.json", "&>", "${workspaceFolder}/STREAM-FDL/logs/$(date +'%F-%H-%M').log"],
+      "args": ["${workspaceFolder}/STREAM-FDL/example-config.json", "2>", "${workspaceFolder}/STREAM-FDL/logs/$(date +'%F-%H-%M').log"],
       "cwd": "${workspaceFolder}/STREAM-FDL",
       "environment": [],
 
@@ -27,8 +30,10 @@
       "name": "Launch STREAM-DSM",
       "type": "cppdbg",
       "request": "launch",
+      "presentation": {
+        "hidden": true,
+      },
 
-      "preLaunchTask": "Build DSM",
       "program": "${workspaceFolder}/STREAM-DSM/build/datamgmt/datamgmt",
       "cwd": "${workspaceFolder}/STREAM-DSM",
       "environment": [],
@@ -38,36 +43,43 @@
       "MIMode": "gdb",
     },
     {
-      "name": "Launch STREAM evaluation",
-      "terminalName": "Evaluation",
-      "type": "f5anything",
+      "name": "Launch evaluation",
+      "type": "cppdbg",
       "request": "launch",
+      "presentation": {
+        "hidden": true,
+      },
 
-      "preLaunchTask": "Build evaluation",
-      "command": "bash ${workspaceFolder}/.vscode/scripts/launch-irobot-benchmark.bash ${workspaceFolder}",
+      "preLaunchTask": "Wait 3s",
+      "program": "${workspaceFolder}/evaluation/build/irobot_benchmark/irobot_benchmark",
+      "args": [
+        "--time", "3600",
+        "--results-dir", "results/",
+        "--topology", "src/ros2-performance/irobot_benchmark/topology/mont_blanc.json"
+      ],
+      "cwd": "${workspaceFolder}/evaluation",
+      "environment": [
+        {
+          "name": "LD_LIBRARY_PATH",
+          "value": "/home/ubuntu/stream/evaluation/install/composition_benchmark/lib:/home/ubuntu/stream/evaluation/install/performance_test_factory/lib:/home/ubuntu/stream/evaluation/install/irobot_interfaces_plugin/lib:/home/ubuntu/stream/evaluation/install/performance_test/lib:/home/ubuntu/stream/evaluation/install/performance_metrics/lib:/home/ubuntu/stream/evaluation/install/performance_test_msgs/lib:/home/ubuntu/stream/evaluation/install/memory_benchmark/lib:/opt/ros/rolling/opt/zenoh_cpp_vendor/lib:/opt/ros/rolling/opt/gz_math_vendor/lib:/opt/ros/rolling/opt/gz_utils_vendor/lib:/opt/ros/rolling/opt/rviz_ogre_vendor/lib:/opt/ros/rolling/lib/x86_64-linux-gnu:/opt/ros/rolling/opt/gz_cmake_vendor/lib:/opt/ros/rolling/lib:/usr/local/lib"
+        }
+      ],
 
-      "terminalIndex": -1
+      // "stopAtEntry": false,
+      // "externalConsole": false,
+      "MIMode": "gdb",
     }
   ],
   "compounds": [
     {
       "name": "Launch STREAM",
-      "preLaunchTask": "Build STREAM",
-      "configurations": [
-        "Launch STREAM-FDL",
-        "Launch STREAM-DSM"
-      ],
-      "stopAll": true,
-    },
-    {
-      "name": "Launch evaluation",
-      "preLaunchTask": "Build STREAM full",
+      "preLaunchTask": "STREAM-prelaunnch-task",
       "configurations": [
         "Launch STREAM-FDL",
         "Launch STREAM-DSM",
-        "Launch STREAM evaluation"
+        "Launch evaluation"
       ],
-      "stopAll": false,
+      "stopAll": true,
     }
   ]
 }

@@ -11,6 +11,7 @@ fi
 
 set -ex
 set -o pipefail
+mkdir -p build || exit
 date +'[%x %X]' > build/configure.log || exit
 date +'[%x %X]' > build/build.log || exit
 unbuffer cmake \

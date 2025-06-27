@@ -25,7 +25,8 @@
         "bmalehorn.shell-syntax",
         "redhat.vscode-xml",
         "tamasfe.even-better-toml",
-        "rogalmic.bash-debug"
+        "rogalmic.bash-debug",
+        "Tobias-Faller.vt100-syntax-highlighting"
       ]
 		}
 	}
