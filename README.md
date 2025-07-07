@@ -6,8 +6,32 @@ This `evaluation`-branch features the code that performs the normal operation of
 
 ## Usage
 
+### preparation
+
+Before building, the following manual changes need to be performed:
+
+In [`STREAM-DSM/ws/src/stream/tracer/src/structuralLO/tracer.cpp`](STREAM-DSM/ws/src/stream/tracer/src/structuralLO/tracer.cpp#L84) comment out:
+```c++
+.buf_type   = LTTNG_BUFFER_PER_UID,
+```
+
+In [`STREAM-DSM/ws/src/dbs/src/curl/myCurl.cpp`](STREAM-DSM/ws/src/dbs/src/curl/myCurl.cpp#L9) change:
+```c++
+#define URLNEO4J "http://localhost:7474"
+#define URLINFLUXDB "http://localhost:8086"
+```
+to
+```c++
+#define URLNEO4J "http://neo4j:7474"
+#define URLINFLUXDB "http://influxdb:8086"
+```
+
+# running
+
 All of the following commands are to be executed from the root of the workspace, unless stated otherwise.
 All actions are expected to be run inside [the docker container](.devcontainer/Dockerfile).
+
+The build process includes:
 
 0. Build everything, by running all 3 build scripts in [.vscode/scripts](.vscode/scripts/).
 
@@ -22,3 +46,8 @@ All actions are expected to be run inside [the docker container](.devcontainer/D
 5. Start the payload by running `bash -- .vscode/scripts/launch-irobot-benchmark.bash .`.
 
 6. Run until the FDD pipeline exits, upon which the runtime will be printed to stdout. All log messages are printed to stderr. The runtime characteristics, such as CPU utilisation and RAM usage can be read from a [Grafana interface](http://localhost:3000/).
+
+# observations
+
+Observations about the performance can be made in [grafana](http://localhost:3000/?orgId=1&from=now-6h&to=now&timezone=browser), for more detauls conslut the [STREAM-DSM](https://github.com/KARTOFF8xE/STREAM-DSM/tree/finalize/evaluationTools).
+Observations about the runtime can be made on the stdout pipe.
