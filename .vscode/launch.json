@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch STREAM-FDL",
+      "name": "Launch STREAM-FDL normal",
       "type": "cppdbg",
       "request": "launch",
       "presentation": {
@@ -11,7 +11,42 @@
 
       "preLaunchTask": "Wait 3s",
       "program": "${workspaceFolder}/STREAM-FDL/build/main",
-      "args": ["${workspaceFolder}/STREAM-FDL/example-config.json", "2>", "${workspaceFolder}/STREAM-FDL/logs/$(date +'%F-%H-%M').log"],
+      "args": [
+        "--normal",
+        "${workspaceFolder}/STREAM-FDL/example-config.json",
+        "2>", "${workspaceFolder}/STREAM-FDL/logs/$(date +'%F-%H-%M')-logging.log",
+        // "1>", "${workspaceFolder}/STREAM-FDL/logs/$(date +'%F-%H-%M')-times.log"
+      ],
+      "cwd": "${workspaceFolder}/STREAM-FDL",
+      "environment": [],
+
+      // "stopAtEntry": false,
+      // "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Allow SIGHUP",
+          "text": "handle SIGHUP nostop pass print",
+          "ignoreFailures": false
+        }
+      ]
+    },
+    {
+      "name": "Launch STREAM-FDL holistic",
+      "type": "cppdbg",
+      "request": "launch",
+      "presentation": {
+        "hidden": true,
+      },
+
+      "preLaunchTask": "Wait 3s",
+      "program": "${workspaceFolder}/STREAM-FDL/build/main",
+      "args": [
+        "--holistic",
+        "${workspaceFolder}/STREAM-FDL/example-config.json",
+        "2>", "${workspaceFolder}/STREAM-FDL/logs/$(date +'%F-%H-%M')-holistic-logging.log",
+        // "1>", "${workspaceFolder}/STREAM-FDL/logs/$(date +'%F-%H-%M')-holistic-times.log"
+      ],
       "cwd": "${workspaceFolder}/STREAM-FDL",
       "environment": [],
 
@@ -72,10 +107,20 @@
   ],
   "compounds": [
     {
-      "name": "Launch STREAM",
+      "name": "Launch STREAM normal",
       "preLaunchTask": "STREAM-prelaunnch-task",
       "configurations": [
-        "Launch STREAM-FDL",
+        "Launch STREAM-FDL normal",
+        "Launch STREAM-DSM",
+        "Launch evaluation"
+      ],
+      "stopAll": true,
+    },
+    {
+      "name": "Launch STREAM holistic",
+      "preLaunchTask": "STREAM-prelaunnch-task",
+      "configurations": [
+        "Launch STREAM-FDL holistic",
         "Launch STREAM-DSM",
         "Launch evaluation"
       ],

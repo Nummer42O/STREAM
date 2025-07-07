@@ -78,9 +78,9 @@
 
       "command": ":",
       "dependsOn": [
-        "Build FDL",
-        "Build DSM",
-        "Build evaluation",
+        // "Build FDL",
+        // "Build DSM",
+        // "Build evaluation",
         "Reset neo4j"
       ],
       "dependsOrder": "parallel",

@@ -19,7 +19,7 @@ unbuffer cmake \
   -B build/ \
   -DCMAKE_BUILD_TYPE=Debug \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-  -DFDL_LOG_LEVEL=0 \
+  -DFDL_LOG_LEVEL=6 \
   -DFDL_LOG_TIMESTAMP=ON \
   -DFDL_LOG_MINIMAL=ON \
   2>&1 | tee build/configure.log

@@ -1,10 +1,7 @@
 process_names:
-  - name: "ros2talker"
+  - name: "payload"
     cmdline:
-      - "talker"
-  - name: "ros2listener"
-    cmdline:
-      - "listener"
+      - "/lib/irobot_benchmark/irobot_benchmark"
   - name: "datamgmt"
     cmdline:
       - "/lib/datamgmt/datamgmt"
